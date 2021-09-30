@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <title>Quote API</title>
+  <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/x-icon"ç href="favicon.ico">
+</head>
+<body>
+  <h1>Quote API</h1>
+  <button id='toggle' title='Toggle Me'>Computing Quotes</button>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="add-quote.html">Add/Edit/Delete a Quote</a>
+  </nav>
+  <h2>Add/Edit/Delete a Quote</h2>
+  <i>Only fill in Quote ID if editing or deleting.</i>
+  <i>Only fill in Quote text and/or Person if adding or editing.</i>
+  <br>
+  <div class="inputs">
+    <label for="quote">Quote ID (if Editing/Deleting):</label>
+    <input id="quote-id" value="" type="number">
+    <label for="quote">Quote text:</label>
+    <input id="quote" value="">
+    <label for="person">Person:</label>
+    <input id="person" value="">
+  </div>
+  <div>
+    <button id="submit-quote">Submit</button>
+  </div>
+  <div id="new-quote">
+    
+  </div>
+  <script src="add-quote.js"></script>
+</body>
+</html>
