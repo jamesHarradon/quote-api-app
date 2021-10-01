@@ -30,6 +30,7 @@ const renderError = response => {
 
 const renderQuotes = (quotes = []) => {
   resetQuotes();
+  console.log(quotes);
   if (quotes.length > 0) {
     quotes.forEach(quote => {
       const newQuote = document.createElement('div');

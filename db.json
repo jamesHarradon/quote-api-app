@@ -1,33 +1,34 @@
-{"quotes" : [
-        {
-        "id": 1,
-        "quote": "We build our computer (systems) the way we build our cities: over time, without a plan, on top of ruins.",
-        "person": "Ellen Ullman"
-        },
-        {
-        "id": 2,
-        "quote": "The best thing about a boolean is even if you are wrong, you are only off by a bit.",
-        "person": "Anonymous"
-        },
-        {
-        "id": 3,
-        "quote": "If it's a good idea, go ahead and do it. It's much easier to apologize than it is to get permission.",
-        "person": "Grace Hopper"
-        },
-        {
-        "id": 4,
-        "quote": "The city’s central computer told you?  R2D2, you know better than to trust a strange computer!",
-        "person": "C-3PO"
-        },
-        {
-        "id": 5,
-        "quote": "I have always wished for my computer to be as easy to use as my telephone; my wish has come true because I can no longer figure out how to use my telephone.",
-        "person": "Bjarne Stroustrup"
-        },
-        {
-        "id": 6,
-        "quote": "Understand well as I may, my comprehension can only be an infinitesimal fraction of all I want to understand.",
-        "person": "Ada Lovelace"
-        }
-    ]
+{
+  "quotes": [
+    {
+      "id": 1,
+      "quote": "We build our computer (systems) the way we build our cities: over time, without a plan, on top of ruins.",
+      "person": "Ellen Ullman"
+    },
+    {
+      "id": 2,
+      "quote": "The best thing about a boolean is even if you are wrong, you are only off by a bit.",
+      "person": "Anonymous"
+    },
+    {
+      "id": 3,
+      "quote": "If it's a good idea, go ahead and do it. It's much easier to apologize than it is to get permission.",
+      "person": "Grace Hopper"
+    },
+    {
+      "id": 4,
+      "quote": "The city’s central computer told you?  R2D2, you know better than to trust a strange computer!",
+      "person": "C-3PO"
+    },
+    {
+      "id": 5,
+      "quote": "I have always wished for my computer to be as easy to use as my telephone; my wish has come true because I can no longer figure out how to use my telephone.",
+      "person": "Bjarne Stroustrup"
+    },
+    {
+      "id": 6,
+      "quote": "Understand well as I may, my comprehension can only be an infinitesimal fraction of all I want to understand.",
+      "person": "Ada Lovelace"
+    }
+  ]
 }

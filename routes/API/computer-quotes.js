@@ -1,7 +1,8 @@
+
 const express = require('express');
 const morgan = require('morgan');
 
-const { quotes } = require('../../computer-quote-data');
+//const { req.quotes } = require('../../computer-quote-data');
 const { getRandomElement } = require('../../utils');
 const { getQuoteById } = require('../../utils');
 const { getIndexById } = require('../../utils');
@@ -10,11 +11,17 @@ const { idFree } = require('../../utils');
 
 const computerQuotesRouter = express.Router();
 
+computerQuotesRouter.all('*', (req, res, next) => {
+    const quotes = req.app.db.get("quotes");
+    req.quotes = quotes;
+    next();
+})
+
 // this code runs before each /:id path regardless of method, therefore any repeating code in this path can be put in this middleware.
 // variables can be saved as properties to the req object and named as anything you like.
 // ensure next() is called as this executes the next middleware.
 computerQuotesRouter.use('/:id', (req, res, next) => {
-    let quoteObj = getQuoteById(req.params.id, quotes);
+    let quoteObj = getQuoteById(req.params.id, req.quotes);
     req.quoteObj = quoteObj;
     next();
 });
@@ -25,16 +32,17 @@ computerQuotesRouter.use('/:id', (req, res, next) => {
 computerQuotesRouter.use(morgan('tiny'));
 
 computerQuotesRouter.get('/random', (req, res, next) => {
-    let randomQuote = getRandomElement(quotes);
+    let randomQuote = getRandomElement(req.quotes);
     res.status(200).send({ quote: randomQuote });
 });
 
 computerQuotesRouter.get('/', (req, res, next) => {
+    
     if (req.query.person) {
-        let quotesByPerson = quotes.filter(quote => quote.person === req.query.person);
+        let quotesByPerson = req.quotes.filter(quote => quote.person === req.query.person);
         res.status(200).send({ quotes: quotesByPerson});
     } else {
-        res.status(200).send({ quotes: quotes});
+        res.status(200).send({ quotes: req.quotes});
     }
 });
 
@@ -42,11 +50,11 @@ computerQuotesRouter.post('/', (req, res, next) => {
 
     if (req.query.person && req.query.quote) {
         let quoteObj = {
-            id: idFree(quotes),
+            id: idFree(req.quotes),
             person: req.query.person,
             quote: req.query.quote
         };
-        quotes.splice(quoteObj.id-1, 0, quoteObj)
+        req.quotes.splice(quoteObj.id-1, 0, quoteObj)
         res.status(201).send({ quote: quoteObj })
     } else {
         res.status(400).send();
@@ -75,9 +83,9 @@ const editorCheck = (req, res, next) => {
 computerQuotesRouter.put('/:id', editorCheck);
 
 computerQuotesRouter.delete('/:id', (req, res, next) => {
-    let ind = getIndexById(req.params.id, quotes);
+    let ind = getIndexById(req.params.id, req.quotes);
     if (ind !== -1) {
-        quotes.splice(ind, 1);
+        req.quotes.splice(ind, 1);
         // the below is meant to be 204 but does not let you send data.
         res.status(200).send({quote: req.quoteObj});
     } else {
